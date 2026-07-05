@@ -10,17 +10,28 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    --navy-deep:#080D18;
-    --navy-panel:#0F1729;
-    --navy-panel-2:#131D33;
-    --gold:#C9A24B;
-    --gold-bright:#E8C878;
-    --gold-dim:#8B6F1F;
-    --ivory:#F3EEE2;
-    --muted:#8D93A6;
-    --line: rgba(201,162,75,0.22);
+    --navy-deep:#180B2B;
+    --navy-panel:#231344;
+    --navy-panel-2:#2B1A52;
+    --gold:#E8B94E;
+    --gold-bright:#F7D686;
+    --gold-dim:#B8892A;
+    --pink:#E85D9E;
+    --pink-bright:#FF8FC4;
+    --pink-dim:#B33D75;
+    --purple:#9B5DE5;
+    --purple-bright:#C08CF5;
+    --purple-dim:#6E3BAE;
+    --ivory:#F8F2FB;
+    --muted:#B4A3CE;
+    --line: rgba(184,122,240,0.25);
+    --tri-gradient: linear-gradient(100deg, var(--gold) 0%, var(--pink) 50%, var(--purple) 100%);
     --maxw: 1180px;
   }
+  .eyebrow.pink{ color:var(--pink); }
+  .eyebrow.pink::before{ background:var(--pink); }
+  .eyebrow.purple{ color:var(--purple-bright); }
+  .eyebrow.purple::before{ background:var(--purple-bright); }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   body{
@@ -81,14 +92,14 @@
   header{
     position:fixed; top:0; left:0; right:0;
     z-index:100;
-    background:linear-gradient(180deg, rgba(8,13,24,0.92), rgba(8,13,24,0.0));
+    background:linear-gradient(180deg, rgba(24,11,43,0.92), rgba(24,11,43,0.0));
     backdrop-filter:blur(6px);
     padding:20px 0;
     transition:padding .3s ease, background .3s ease;
   }
   header.scrolled{
     padding:12px 0;
-    background:rgba(8,13,24,0.88);
+    background:rgba(24,11,43,0.88);
     border-bottom:1px solid var(--line);
   }
   nav{
@@ -118,7 +129,7 @@
     color:var(--gold-bright);
     transition:all .25s ease;
   }
-  .nav-cta:hover{background:var(--gold); color:var(--navy-deep); border-color:var(--gold);}
+  .nav-cta:hover{background:var(--tri-gradient); color:#1F0C33; border-color:transparent;}
   .menu-btn{display:none; background:none; border:none; color:var(--ivory); font-size:24px; cursor:pointer;}
 
   /* HERO */
@@ -136,19 +147,28 @@
     align-items:center; width:100%;
   }
   .hero-glow{
-    position:absolute; top:-10%; right:-10%;
-    width:700px; height:700px;
-    background:radial-gradient(circle, rgba(201,162,75,0.16) 0%, rgba(201,162,75,0) 70%);
+    position:absolute; top:-15%; right:-8%;
+    width:760px; height:760px;
+    background:radial-gradient(circle, rgba(232,185,78,0.18) 0%, rgba(232,185,78,0) 60%);
     pointer-events:none;
+  }
+  .hero-glow::after{
+    content:'';
+    position:absolute; bottom:-320px; left:-260px;
+    width:640px; height:640px;
+    background:radial-gradient(circle, rgba(155,93,229,0.20) 0%, rgba(232,93,158,0.10) 45%, rgba(155,93,229,0) 70%);
   }
   .hero h1{
     font-size:clamp(42px, 6vw, 74px);
     line-height:1.02;
-    color:var(--ivory);
+    background:var(--tri-gradient);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
   }
   .hero h1 em{
     font-style:normal;
-    color:var(--gold-bright);
+    color:var(--pink-bright);
   }
   .hero-title{
     margin-top:18px;
@@ -170,8 +190,8 @@
   }
   .hero-ctas{ display:flex; gap:16px; margin-top:38px; }
   .btn-primary{
-    background:var(--gold);
-    color:var(--navy-deep);
+    background:linear-gradient(100deg, var(--gold), var(--pink));
+    color:#1F0C33;
     padding:15px 30px;
     font-weight:800;
     font-size:14px;
@@ -179,7 +199,7 @@
     border-radius:2px;
     transition:transform .2s ease, box-shadow .2s ease;
   }
-  .btn-primary:hover{ transform:translateY(-2px); box-shadow:0 10px 30px rgba(201,162,75,0.25); }
+  .btn-primary:hover{ transform:translateY(-2px); box-shadow:0 10px 30px rgba(155,93,229,0.35); }
   .btn-ghost{
     border:1px solid var(--line);
     color:var(--ivory);
@@ -205,8 +225,8 @@
   .hero-photo-wrap::after{
     content:'';
     position:absolute; inset:0;
-    background:linear-gradient(180deg, rgba(8,13,24,0) 40%, rgba(8,13,24,0.85) 100%),
-               linear-gradient(90deg, rgba(8,13,24,0.35), rgba(8,13,24,0) 30%);
+    background:linear-gradient(180deg, rgba(24,11,43,0) 40%, rgba(24,11,43,0.85) 100%),
+               linear-gradient(90deg, rgba(24,11,43,0.35), rgba(24,11,43,0) 30%);
   }
   .hero-photo-tag{
     position:absolute; left:20px; bottom:18px; z-index:2;
@@ -215,7 +235,7 @@
   }
   .hero-photo-frame{
     position:absolute; inset:14px;
-    border:1px solid rgba(201,162,75,0.4);
+    border:1px solid rgba(184,122,240,0.45);
     pointer-events:none; z-index:2;
   }
 
@@ -235,7 +255,11 @@
   }
   .divider-mark{
     width:8px; height:8px; transform:rotate(45deg);
-    background:var(--gold); display:inline-block;
+    background:var(--tri-gradient); display:inline-block;
+  }
+  .section-head h2 .grad{
+    background:var(--tri-gradient);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
   }
 
   /* ABOUT */
@@ -269,10 +293,24 @@
     padding:38px 32px;
     transition:background .3s ease;
   }
+  .service-card{ border-top:3px solid transparent; }
   .service-card:hover{ background:var(--navy-panel); }
-  .service-card .idx{ color:var(--gold-dim); font-size:13px; font-weight:700; letter-spacing:0.08em; }
+  .service-card .icon-box{
+    width:48px; height:48px;
+    display:flex; align-items:center; justify-content:center;
+    border:1px solid var(--line); border-radius:50%;
+    margin-bottom:18px;
+  }
+  .service-card .icon-box svg{ width:22px; height:22px; }
+  .service-card .idx{ font-size:13px; font-weight:700; letter-spacing:0.08em; }
   .service-card h3{ font-size:24px; margin-top:16px; color:var(--ivory); }
   .service-card p{ color:var(--muted); font-size:14.5px; line-height:1.7; margin-top:12px; }
+  .service-card:nth-child(3n+1){ border-top-color:var(--gold); }
+  .service-card:nth-child(3n+1) .idx, .service-card:nth-child(3n+1) .icon-box svg{ color:var(--gold-bright); stroke:var(--gold-bright); }
+  .service-card:nth-child(3n+2){ border-top-color:var(--pink); }
+  .service-card:nth-child(3n+2) .idx, .service-card:nth-child(3n+2) .icon-box svg{ color:var(--pink-bright); stroke:var(--pink-bright); }
+  .service-card:nth-child(3n+3){ border-top-color:var(--purple); }
+  .service-card:nth-child(3n+3) .idx, .service-card:nth-child(3n+3) .icon-box svg{ color:var(--purple-bright); stroke:var(--purple-bright); }
 
   /* SKILLS */
   .skills-wrap{ display:grid; grid-template-columns:1fr 1fr; gap:60px; }
@@ -281,7 +319,7 @@
   .skill-row .top span:first-child{ font-weight:700; color:var(--ivory); }
   .skill-row .top span:last-child{ color:var(--gold); font-weight:700; }
   .bar-track{ height:3px; background:var(--navy-panel-2); position:relative; }
-  .bar-fill{ position:absolute; left:0; top:0; height:100%; background:linear-gradient(90deg, var(--gold-dim), var(--gold-bright)); width:0%; transition:width 1.4s cubic-bezier(.2,.8,.2,1); }
+  .bar-fill{ position:absolute; left:0; top:0; height:100%; background:var(--tri-gradient); width:0%; transition:width 1.4s cubic-bezier(.2,.8,.2,1); }
 
   /* RECOGNITION / INSTITUTE */
   .recognition{
@@ -304,11 +342,25 @@
     transition:transform .25s ease, border-color .25s ease;
     display:flex; flex-direction:column; height:100%;
   }
-  .project-card:hover{ transform:translateY(-6px); border-color:var(--gold-dim); }
-  .project-card .tag{ font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold-dim); font-weight:700; }
+  .project-card{ border-left:3px solid transparent; }
+  .project-card:hover{ transform:translateY(-6px); }
+  .project-card .icon-box{
+    width:42px; height:42px;
+    display:flex; align-items:center; justify-content:center;
+    border:1px solid var(--line); border-radius:8px;
+    margin-bottom:16px;
+  }
+  .project-card .icon-box svg{ width:20px; height:20px; }
+  .project-card .tag{ font-size:12px; letter-spacing:0.1em; text-transform:uppercase; font-weight:700; }
   .project-card h3{ font-size:23px; margin-top:14px; color:var(--ivory); }
   .project-card p{ color:var(--muted); font-size:14.5px; line-height:1.7; margin-top:12px; flex-grow:1; }
-  .project-card .link-out{ margin-top:20px; font-size:13.5px; font-weight:700; color:var(--gold-bright); display:flex; align-items:center; gap:8px; }
+  .project-card .link-out{ margin-top:20px; font-size:13.5px; font-weight:700; display:flex; align-items:center; gap:8px; }
+  .project-card:nth-child(3n+1){ border-left-color:var(--gold); }
+  .project-card:nth-child(3n+1) .tag, .project-card:nth-child(3n+1) .link-out, .project-card:nth-child(3n+1) .icon-box svg{ color:var(--gold-bright); }
+  .project-card:nth-child(3n+2){ border-left-color:var(--pink); }
+  .project-card:nth-child(3n+2) .tag, .project-card:nth-child(3n+2) .link-out, .project-card:nth-child(3n+2) .icon-box svg{ color:var(--pink-bright); }
+  .project-card:nth-child(3n+3){ border-left-color:var(--purple); }
+  .project-card:nth-child(3n+3) .tag, .project-card:nth-child(3n+3) .link-out, .project-card:nth-child(3n+3) .icon-box svg{ color:var(--purple-bright); }
 
   /* CONTACT */
   .contact-grid{ display:grid; grid-template-columns:1fr 1fr; gap:70px; }
@@ -325,6 +377,8 @@
     transition:all .25s ease;
   }
   .social-row a:hover{ border-color:var(--gold); color:var(--gold-bright); }
+  .social-row a:nth-child(3n+2):hover{ border-color:var(--pink); color:var(--pink-bright); }
+  .social-row a:nth-child(3n+3):hover{ border-color:var(--purple); color:var(--purple-bright); }
   .cta-panel{
     background:var(--navy-panel);
     border:1px solid var(--line);
@@ -430,39 +484,45 @@
 <section id="services" style="background:var(--navy-panel); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
   <div class="wrap">
     <div class="section-head reveal">
-      <div class="eyebrow">SERVICES</div>
-      <h2>Where the work happens.</h2>
+      <div class="eyebrow pink">SERVICES</div>
+      <h2>Where the work <span class="grad">happens</span>.</h2>
       <p>Focused, practical services — no jargon, no bloated packages.</p>
     </div>
   </div>
   <div class="wrap" style="padding:0;">
     <div class="services-grid reveal">
       <div class="service-card">
+        <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></div>
         <div class="idx">01</div>
         <h3>Digital Marketing Strategy</h3>
         <p>End-to-end marketing plans built around real goals — visibility, leads, and consistent growth.</p>
       </div>
       <div class="service-card">
+        <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M3 12h3M18 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg></div>
         <div class="idx">02</div>
         <h3>AI Tools &amp; Automation</h3>
         <p>Practical AI workflows for content, research, and daily operations — built to save real hours.</p>
       </div>
       <div class="service-card">
+        <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 9h18M8 13h3"/></svg></div>
         <div class="idx">03</div>
         <h3>Social Media Growth</h3>
         <p>Content systems and posting strategy across Facebook, Instagram, and TikTok that build an audience.</p>
       </div>
       <div class="service-card">
+        <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10l8-6 8 6v10"/><path d="M9 20v-6h6v6"/></svg></div>
         <div class="idx">04</div>
         <h3>Web Development</h3>
         <p>Clean, fast personal and business websites — portfolios, resumes, and landing pages.</p>
       </div>
       <div class="service-card">
+        <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.4 5.6L20 9l-4.5 3.9L16.8 19 12 15.8 7.2 19l1.3-6.1L4 9l5.6-.4z"/></svg></div>
         <div class="idx">05</div>
         <h3>Branding &amp; Content</h3>
         <p>Identity, tone, and visual direction that make a business or a person memorable.</p>
       </div>
       <div class="service-card">
+        <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5V6a2 2 0 012-2h11a1 1 0 011 1v13"/><path d="M4 19.5A2 2 0 016 17.5h13"/></svg></div>
         <div class="idx">06</div>
         <h3>Digital Skills Training</h3>
         <p>Hands-on training for students and teachers bringing modern tools into traditional institutions.</p>
@@ -475,8 +535,8 @@
 <section id="skills">
   <div class="wrap">
     <div class="section-head reveal">
-      <div class="eyebrow">SKILLS</div>
-      <h2>Core strengths.</h2>
+      <div class="eyebrow purple">SKILLS</div>
+      <h2>Core <span class="grad">strengths</span>.</h2>
     </div>
     <div class="skills-wrap">
       <div class="reveal">
@@ -516,14 +576,14 @@
   <div class="wrap">
     <div class="section-head reveal">
       <div class="eyebrow">RECOGNITION</div>
-      <h2>Honoured by Al-Saadah International Academy.</h2>
+      <h2>Honoured by <span class="grad">As-sa'adah International Academy</span>.</h2>
     </div>
     <div class="recognition reveal">
       <img src="assets/announcement.png" alt="Appointment and recognition announcement from Al-Saadah International Academy">
       <div>
         <h3>Digital Empire Partner Institute</h3>
-        <p>Shahid Digital Empire was recognised by Al-Saadah International Academy for its sincere contribution toward combining deeni ta'leem with modern technology — supporting students, teachers, and the wider community with digital skills for the future.</p>
-        <p class="loc">📍 Al-Saadah International Academy, Iqbal Complex, near Miraj Bank, Saidu Sharif, Swat</p>
+        <p>Shahid Digital Empire was recognised by As-sa'adah — a comprehensive Islamic welfare organisation delivering education, healthcare, and socio-economic support since 2015 — for its sincere contribution toward combining deeni ta'leem with modern technology.</p>
+        <p class="loc">📍 As-sa'adah Center, Q634+452, Chaman Zar Hill, Islamabad, Pakistan</p>
       </div>
     </div>
   </div>
@@ -533,24 +593,27 @@
 <section id="projects">
   <div class="wrap">
     <div class="section-head reveal">
-      <div class="eyebrow">PROJECTS</div>
-      <h2>Selected work.</h2>
+      <div class="eyebrow purple">PROJECTS</div>
+      <h2>Selected <span class="grad">work</span>.</h2>
       <p>A few live builds — more added as new work ships.</p>
     </div>
     <div class="projects-grid reveal">
       <div class="project-card">
+        <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
         <div class="tag">Business Hub</div>
         <h3>Shahid Digital Inspire Hub</h3>
         <p>The main hub for Shahid Digital Empire's services, offerings, and digital marketing work.</p>
         <a class="link-out" href="https://shahidzresumeofficial-wq.github.io/Shahid-Digital-inspire-hub/" target="_blank" rel="noopener">Visit site →</a>
       </div>
       <div class="project-card">
+        <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4c-2 2-3 4-3 7a3 3 0 006 0c0-3-1-5-3-7z"/><path d="M6 20c1.5-2 3.5-3 6-3s4.5 1 6 3"/></svg></div>
         <div class="tag">Islamic Portal</div>
         <h3>Shahid Islamic Portal</h3>
         <p>A dedicated portal bringing Islamic content and resources to a wider digital audience.</p>
         <a class="link-out" href="https://shahidzresumeofficial-wq.github.io/Shahid-Islamic-portal-/" target="_blank" rel="noopener">Visit site →</a>
       </div>
       <div class="project-card">
+        <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></div>
         <div class="tag">Web Build</div>
         <h3>Rabbana Dua</h3>
         <p>A focused single-purpose site collecting Qur'anic du'as for daily use.</p>
@@ -564,8 +627,8 @@
 <section id="contact" style="background:var(--navy-panel); border-top:1px solid var(--line);">
   <div class="wrap">
     <div class="section-head reveal">
-      <div class="eyebrow">CONTACT</div>
-      <h2>Let's build something.</h2>
+      <div class="eyebrow pink">CONTACT</div>
+      <h2>Let's build <span class="grad">something</span>.</h2>
     </div>
     <div class="contact-grid">
       <div class="reveal">
@@ -624,7 +687,7 @@
     if (mobileOpen) {
       const nav = document.createElement('div');
       nav.id = 'mobileNav';
-      nav.style.cssText = 'position:fixed; top:0; left:0; right:0; bottom:0; background:#080D18; z-index:99; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:28px; font-size:22px; font-family:Cormorant Garamond, serif;';
+      nav.style.cssText = 'position:fixed; top:0; left:0; right:0; bottom:0; background:#180B2B; z-index:99; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:28px; font-size:22px; font-family:Cormorant Garamond, serif;';
       const links = [['#about','About'],['#services','Services'],['#skills','Skills'],['#recognition','Recognition'],['#projects','Projects'],['#contact','Contact']];
       links.forEach(([href,label]) => {
         const a = document.createElement('a');
@@ -660,4 +723,3 @@
 
 </body>
 </html>
-
