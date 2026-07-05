@@ -1,1 +1,9 @@
+آپ کی نئی پروفیشنل ویب سائٹ تیار ہے — navy/gold تھیم، آپ کی تصاویر، اور دونوں تفصیل والا مکمل ڈھانچہ (Hero, About, Services, Skills, Recognition, Projects, Contact) کے ساتھ۔
 
+خاص باتیں:
+- **Hero** میں آپ کی آفس والی تصویر + "علم کے ساتھ ہنر بھی ضروری" ٹیگ لائن
+- **Recognition** سیکشن میں الساعادہ اکیڈمی والا award پوسٹر شامل کیا
+- **Projects** میں آپ کی تینوں سائٹس (Digital Inspire Hub، Islamic Portal، Rabbana Dua) کے لنکس
+- **Contact** میں WhatsApp، Email، اور تمام سوشل لنکس (FB, Instagram, LinkedIn, TikTok)
+
+یہ GitHub Pages پر اپلوڈ کرنے کے لیے تیار ہے — بس `index.html` اور `assets` فولڈر اپنی ریپو میں ڈال دیں۔ اگر کوئی رنگ، ٹیکسٹ، یا سیکشن بدلوانا ہو تو بتا دیں۔
